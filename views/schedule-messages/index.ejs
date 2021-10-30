@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App bot command schedule</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+      <%- include("../partials/header.ejs") %>
+      <div class="container mt-2">
+        <h2 class="text-center">Register schedule messages</h2>
+        <form action="/schedule-messages" method="post">
+            <div class="form-group">
+              <label for="channel">Channel:</label>
+              <input type="text" class="form-control"
+              id="channel" name="channel" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <input type="text" class="form-control" 
+              id="message" name="message" required>
+            </div>
+            <div class="form-group">
+              <label for="triggerAt">Trigger At:</label>
+              <input type="datetime-local" class="form-control" 
+              id="triggerAt" name="triggerAt" required>
+            </div>
+            <button type="submit" class="btn btn-primary">register</button>
+          </form>
+
+          <br/>
+          <h2>Scheduled messages</h2>
+          <br>
+          <%- include("../partials/successNotification.ejs") %>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Channel</th>
+                <th scope="col">Message</th>
+                <th scope="col">triggerAt</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% scheduledMessages.map(item => { %>
+                <tr>
+                  <th scope="row"><%= item.id %></th>
+                  <td><%= item.channel %></td>
+                  <td><%= item.message %></td>
+                  <td><%= (item.triggerAt) %></td>
+                  <td>
+                    <a href="/schedule-messages/delete/<%= item.id %>" class="btn btn-danger">
+                      Excluir
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm bg-dark">
+    <a class="navbr-brand text-white ">Bot Discord</a>
+    <ul class="navbar-nav">
+      <% if (isUserAuthenticated()) { %>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/schedule-messages">Schedule messages</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link  text-white" href="/commands">Commands</a>
+        </li>
+  
+        <li class="nav-item ">
+          <a class="nav-link  text-white" href="/users/logout">Logout</a>
+        </li>
+      <% } %>
+      
+    </ul>
+  
+  </nav>

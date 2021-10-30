@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App bot command schedule</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+      <%- include("../partials/header.ejs") %>
+
+      <div class="container mt-2">
+        <h2 class="text-center">Register commands</h2>
+        <form action="/commands" method="post">
+            <div class="form-group">
+              <label for="command">Command:</label>
+              <input type="text" class="form-control"
+              id="command" name="command" required>
+            </div>
+            <div class="form-group">
+              <label for="typeAction">Ação executar:</label>
+              <select class="form-control" id="typeAction" name="typeAction" required>
+                <option value="replyWithText">Responder com message</option>
+                <option value="executeWebhook">Disparar um webhook</option>
+                <option value="transformTextToAudio">Transformar texto em audio</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="description">Descrição:</label>
+              <input type="text" class="form-control" 
+              id="description" name="description" required>
+            </div>
+            <div class="form-group">
+              <label for="reply">Resposta:</label>
+              <input type="text" class="form-control" 
+              id="reply" name="reply" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+
+          <br/>
+          <%- include("../partials/successNotification.ejs") %>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Commad</th>
+                <th>Action</th>
+                <th>Description</th>
+                <th>reply</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% commands.map(item => { %>
+                <tr>
+                  <td><%= item.id %></td>
+                  <td><%= item.command %></td>
+                  <td><%= item.typeAction %></td>
+                  <td><%= item.description %></td>
+                  <td><%= item.reply %></td>
+                  <td>
+                    <a class="btn btn-danger" href="/commands/delete/<%= item.id %>">
+                      Excluir
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+
+            </tbody>
+          </table>
+      </div>
+  </body>
+</html>
