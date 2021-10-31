@@ -7,24 +7,6 @@ import { ScheduleMessage } from "./schedule_message.entity";
 
 import Discord = require('discord.js');
 
-//     setInterval(() => {
-//         for (let indice = 0; indice < scheduleMessages.length; indice++) {
-//             const scheduledMessage = scheduleMessages[indice]
-//             if (!scheduledMessage) {
-//                 continue;
-//             }
-//             const isSendMessage = (new Date().getTime()) > (new Date(scheduledMessage.scheduledAt).getTime())
-//             const channel = client.channels.cache
-//                 .find(channel => channel.name === scheduledMessage.channel)
-//             if (isSendMessage && channel) {
-//                 channel.send(scheduledMessage.message)
-//                 delete scheduleMessages[indice]
-//             }
-//         }
-//     }, 5000)
-// });
-
-
 @Injectable()
 export class ScheduleMessageService {
 
