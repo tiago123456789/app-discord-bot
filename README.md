@@ -40,3 +40,8 @@ INSTRUCTION RUNNING THE PROJECT:
 - Execute command **npm install**
 - Execute command **docker-compose up -d** to up database
 - Execute command **npm run start:dev** to running bot locally
+
+OBS: POST EXPLAIN HOW TO CREATE DISCORD BOT AND TOKEN
+======================================================
+
+Link: https://www.freecodecamp.org/news/create-a-discord-bot-with-python/
